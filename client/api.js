@@ -1,5 +1,7 @@
 import fetch from 'unfetch'
 
+const baseUrl = 'https://bundlephobia.com'
+
 export default class API {
   static get(url, isInternal = true) {
     const headers = {
@@ -38,27 +40,27 @@ export default class API {
   }
 
   static getInfo(packageString) {
-    return API.get(`/api/size?package=${packageString}&record=true`)
+    return API.get(`${baseUrl}/api/size?package=${packageString}&record=true`)
   }
 
   static getExports(packageString) {
-    return API.get(`/api/exports?package=${packageString}`)
+    return API.get(`${baseUrl}/api/exports?package=${packageString}`)
   }
 
   static getExportsSizes(packageString) {
-    return API.get(`/api/exports-sizes?package=${packageString}`)
+    return API.get(`${baseUrl}/api/exports-sizes?package=${packageString}`)
   }
 
   static getHistory(packageString) {
-    return API.get(`/api/package-history?package=${packageString}`)
+    return API.get(`${baseUrl}/api/package-history?package=${packageString}`)
   }
 
   static getRecentSearches(limit) {
-    return API.get(`/api/recent?limit=${limit}`)
+    return API.get(`${baseUrl}/api/recent?limit=${limit}`)
   }
 
   static getSimilar(packageName) {
-    return API.get(`/api/similar-packages?package=${packageName}`)
+    return API.get(`${baseUrl}/api/similar-packages?package=${packageName}`)
   }
 
   static getSuggestions(query) {
@@ -85,7 +87,7 @@ export default class API {
 
     //backup when npms.io is down
 
-    //return API.get(`/-/search?text=${query}`)
+    //return API.get(`${baseUrl}/-/search?text=${query}`)
     //  .then(result => result.objects
     //    .sort(suggestionSort)
     //    .map(suggestion => {
